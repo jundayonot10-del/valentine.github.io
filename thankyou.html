@@ -1,23 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Thank you</title>
-    <link rel="stylesheet" href="css/lastpage.css" />
-  </head>
-  <body>
-    <div id="thankyou"><b>Thank you</b></div>
 
-    <img id="rizz" src="rizz.gif" alt="rizzler god" class="responsive" />
-    <br />
-    <audio controls autoplay loop>
-      <source src="congratulations.mp3" type="audio/mpeg" />
-      Your browser does not support the audio element.
-    </audio>
-    <h1>Gotchu bestfriend! :)) </h1>
-    <button class="button" onclick="location.href='date.html'">
-      Click me Chacha
-    </button>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank You</title>
+  <link rel="stylesheet" href="css/lastpage.css" />
+</head>
+
+<body>
+
+  <div id="thankyou">
+    <b>Thank you</b>
+  </div>
+
+  <img id="rizz" src="rizz.gif" alt="rizzler god" class="responsive" />
+
+  <br />
+
+  <audio controls autoplay loop>
+    <source src="congratulations.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <h1>Gotchu bestfriend! :))</h1>
+
+  <form id="finalForm" action="https://formspree.io/f/xojbrokp" method="POST">
+
+```
+<input type="hidden" name="date" id="dateField">
+
+<input type="hidden" name="food" id="foodField">
+
+<input type="hidden" name="dessert" id="dessertField">
+
+<input type="hidden" name="activities" id="activitiesField">
+
+<button
+  class="button"
+  type="button"
+  onclick="sendResults()"
+>
+  Click me Chacha
+</button>
+```
+
+  </form>
+
+  <script>
+
+    function sendResults() {
+
+      document.getElementById("dateField").value =
+        localStorage.getItem("selectedDate") || "";
+
+      document.getElementById("foodField").value =
+        localStorage.getItem("selectedFood") || "";
+
+      document.getElementById("dessertField").value =
+        localStorage.getItem("selectedDessert") || "";
+
+      document.getElementById("activitiesField").value =
+        localStorage.getItem("selectedActivities") || "";
+
+      document.getElementById("finalForm").submit();
+    }
+
+  </script>
+
+</body>
 </html>
