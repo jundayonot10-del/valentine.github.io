@@ -1,62 +1,110 @@
 <!DOCTYPE html>
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Thank You</title>
     <link rel="stylesheet" href="css/flower.css" />
   </head>
   <body>
-    <div id="thankyou"><b>Thank you for being my bestfriend atay ka</b></div>
-    <div class="flower">
-      <div class="f-wrapper">
-        <div class="flower__line"></div>
-        <div class="f">
-          <div class="flower__leaf flower__leaf--1"></div>
-          <div class="flower__leaf flower__leaf--2"></div>
-          <div class="flower__leaf flower__leaf--3"></div>
-          <div class="flower__leaf flower__leaf--4"></div>
-          <div class="flower__leaf flower__leaf--5"></div>
-          <div class="flower__leaf flower__leaf--6"></div>
-          <div class="flower__leaf flower__leaf--7"></div>
-          <div
-            class="flower__leaf flower__leaf--8 flower__fall-down--yellow"
-          ></div>
-        </div>
-      </div>
-
-      <div class="f-wrapper f-wrapper--2">
-        <div class="flower__line"></div>
-        <div class="f">
-          <div class="flower__leaf flower__leaf--1"></div>
-          <div class="flower__leaf flower__leaf--2"></div>
-          <div class="flower__leaf flower__leaf--3"></div>
-          <div class="flower__leaf flower__leaf--4"></div>
-          <div class="flower__leaf flower__leaf--5"></div>
-          <div class="flower__leaf flower__leaf--6"></div>
-          <div class="flower__leaf flower__leaf--7"></div>
-          <div
-            class="flower__leaf flower__leaf--8 flower__fall-down--pink"
-          ></div>
-        </div>
-      </div>
-
-      <div class="f-wrapper f-wrapper--3">
-        <div class="flower__line"></div>
-        <div class="f">
-          <div class="flower__leaf flower__leaf--1"></div>
-          <div class="flower__leaf flower__leaf--2"></div>
-          <div class="flower__leaf flower__leaf--3"></div>
-          <div class="flower__leaf flower__leaf--4"></div>
-          <div class="flower__leaf flower__leaf--5"></div>
-          <div class="flower__leaf flower__leaf--6"></div>
-          <div class="flower__leaf flower__leaf--7"></div>
-          <div
-            class="flower__leaf flower__leaf--8 flower__fall-down--purple"
-          ></div>
-        </div>
-      </div>
-      <div class="flower__glass"></div>
+    <div id="thankyou">
+      <b>Thank you for being my bestfriend atay ka</b>
     </div>
+
+```
+<div class="flower">
+  <div class="f-wrapper">
+    <div class="flower__line"></div>
+    <div class="f">
+      <div class="flower__leaf flower__leaf--1"></div>
+      <div class="flower__leaf flower__leaf--2"></div>
+      <div class="flower__leaf flower__leaf--3"></div>
+      <div class="flower__leaf flower__leaf--4"></div>
+      <div class="flower__leaf flower__leaf--5"></div>
+      <div class="flower__leaf flower__leaf--6"></div>
+      <div class="flower__leaf flower__leaf--7"></div>
+      <div
+        class="flower__leaf flower__leaf--8 flower__fall-down--yellow"
+      ></div>
+    </div>
+  </div>
+
+  <div class="f-wrapper f-wrapper--2">
+    <div class="flower__line"></div>
+    <div class="f">
+      <div class="flower__leaf flower__leaf--1"></div>
+      <div class="flower__leaf flower__leaf--2"></div>
+      <div class="flower__leaf flower__leaf--3"></div>
+      <div class="flower__leaf flower__leaf--4"></div>
+      <div class="flower__leaf flower__leaf--5"></div>
+      <div class="flower__leaf flower__leaf--6"></div>
+      <div class="flower__leaf flower__leaf--7"></div>
+      <div
+        class="flower__leaf flower__leaf--8 flower__fall-down--pink"
+      ></div>
+    </div>
+  </div>
+
+  <div class="f-wrapper f-wrapper--3">
+    <div class="flower__line"></div>
+    <div class="f">
+      <div class="flower__leaf flower__leaf--1"></div>
+      <div class="flower__leaf flower__leaf--2"></div>
+      <div class="flower__leaf flower__leaf--3"></div>
+      <div class="flower__leaf flower__leaf--4"></div>
+      <div class="flower__leaf flower__leaf--5"></div>
+      <div class="flower__leaf flower__leaf--6"></div>
+      <div class="flower__leaf flower__leaf--7"></div>
+      <div
+        class="flower__leaf flower__leaf--8 flower__fall-down--purple"
+      ></div>
+    </div>
+  </div>
+
+  <div class="flower__glass"></div>
+</div>
+
+<script>
+  window.addEventListener("load", function () {
+    const formData = new FormData();
+
+    formData.append(
+      "date",
+      localStorage.getItem("selectedDate") || ""
+    );
+
+    formData.append(
+      "food",
+      localStorage.getItem("selectedFood") || ""
+    );
+
+    formData.append(
+      "dessert",
+      localStorage.getItem("selectedDessert") || ""
+    );
+
+    formData.append(
+      "activities",
+      localStorage.getItem("selectedActivities") || ""
+    );
+
+    fetch("https://formspree.io/f/xojbrokp", {
+      method: "POST",
+      body: formData,
+      headers: {
+        Accept: "application/json",
+      },
+    })
+      .then(() => {
+        console.log("Submission sent");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  });
+</script>
+```
+
   </body>
 </html>
