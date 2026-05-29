@@ -1,77 +1,102 @@
 <!DOCTYPE html>
+
 <html lang="en">
-  <head>
+<head>
+    <script src="storage.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Activities</title>
     <link rel="stylesheet" href="css/activities.css" />
-  </head>
-  <body>
-    <div id="activityquestion"><b>What are we doing after?</b></div>
-    <div class="activities-selection">
-      <div class="activity-item">
+</head>
+
+<body>
+
+```
+<div id="activityquestion">
+    <b>What are we doing after?</b>
+</div>
+
+<div class="activities-selection">
+
+    <div class="activity-item">
         <img src="activities/aquarium.jpeg" alt="aquarium" />
-        <label
-          ><input
-            type="checkbox"
-            name="activities"
-            value="aquarium"
-          />aquarium</label
-        >
-      </div>
-      <div class="activity-item">
-        <img src="activities/arcade.jpeg" alt="arcade" />
-        <label
-          ><input
-            type="checkbox"
-            name="activities"
-            value="arcade"
-          />arcade</label
-        >
-      </div>
-      <div class="activity-item">
-        <img src="activities/cinema.jpeg" alt="cinema" />
-        <label
-          ><input
-            type="checkbox"
-            name="activities"
-            value="cinema"
-          />cinema</label
-        >
-      </div>
-      <div class="activity-item">
-        <img src="activities/keramika.jpeg" alt="ceramics" />
-        <label
-          ><input
-            type="checkbox"
-            name="activities"
-            value="ceramics"
-          />ceramics</label
-        >
-      </div>
-      <div class="activity-item">
-        <img src="activities/kunsthalle.jpeg" alt="kunsthalle" />
-        <label
-          ><input
-            type="checkbox"
-            name="activities"
-            value="kunsthalle"
-          />exhibition</label
-        >
-      </div>
-      <div class="activity-item">
-        <img src="activities/park.jpeg" alt="park.jpeg" />
-        <label
-          ><input
-            type="checkbox"
-            name="activities"
-            value="park.jpeg"
-          />park</label
-        >
-      </div>
+        <label>
+            <input type="checkbox" name="activities" value="aquarium" />
+            aquarium
+        </label>
     </div>
-    <button class="button" onclick="location.href='lastpage.html'">
-      Last page
-    </button>
-  </body>
+
+    <div class="activity-item">
+        <img src="activities/arcade.jpeg" alt="arcade" />
+        <label>
+            <input type="checkbox" name="activities" value="arcade" />
+            arcade
+        </label>
+    </div>
+
+    <div class="activity-item">
+        <img src="activities/cinema.jpeg" alt="cinema" />
+        <label>
+            <input type="checkbox" name="activities" value="cinema" />
+            cinema
+        </label>
+    </div>
+
+    <div class="activity-item">
+        <img src="activities/keramika.jpeg" alt="ceramics" />
+        <label>
+            <input type="checkbox" name="activities" value="ceramics" />
+            ceramics
+        </label>
+    </div>
+
+    <div class="activity-item">
+        <img src="activities/kunsthalle.jpeg" alt="exhibition" />
+        <label>
+            <input type="checkbox" name="activities" value="exhibition" />
+            exhibition
+        </label>
+    </div>
+
+    <div class="activity-item">
+        <img src="activities/park.jpeg" alt="park" />
+        <label>
+            <input type="checkbox" name="activities" value="park" />
+            park
+        </label>
+    </div>
+
+</div>
+
+<button class="button" onclick="saveActivities()">
+    Last page
+</button>
+
+<script>
+    function saveActivities() {
+
+        let selectedActivities = [];
+
+        document
+            .querySelectorAll('input[name="activities"]:checked')
+            .forEach(item => {
+                selectedActivities.push(item.value);
+            });
+
+        if (selectedActivities.length === 0) {
+            alert("Please select at least one activity.");
+            return;
+        }
+
+        localStorage.setItem(
+            "selectedActivities",
+            JSON.stringify(selectedActivities)
+        );
+
+        window.location.href = "lastpage.html";
+    }
+</script>
+```
+
+</body>
 </html>
