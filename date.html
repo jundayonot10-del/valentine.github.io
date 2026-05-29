@@ -1,30 +1,67 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <script src="storage.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Date</title>
+    <link rel="stylesheet" href="css/date.css" />
+</head>
+
+<body>
+
+```
+<h1 title="choose a date">
+    As your bestfriend, Are you free on ...
+</h1>
+
 <form class="form-group">
-  <label>Which day: (select a date)</label>
 
-  <div>
-    <input type="date" id="datePicker" />
+    <label>Which day: (select a date)</label>
 
-    <button
-      class="button"
-      type="button"
-      onclick="saveDate()"
-    >
-      Submit
-    </button>
-  </div>
+    <div>
+
+        <input
+            type="date"
+            id="datePicker"
+            required
+        />
+
+        <button
+            class="button"
+            type="button"
+            onclick="saveDate()"
+        >
+            Submit
+        </button>
+
+    </div>
+
 </form>
 
 <script>
-function saveDate() {
 
-  const selectedDate =
-    document.getElementById("datePicker").value;
+    function saveDate() {
 
-  localStorage.setItem(
-    "selectedDate",
-    selectedDate
-  );
+        const selectedDate =
+            document.getElementById("datePicker").value;
 
-  window.location.href = "food.html";
-}
+        if (!selectedDate) {
+            alert("Please select a date first.");
+            return;
+        }
+
+        localStorage.setItem(
+            "selectedDate",
+            selectedDate
+        );
+
+        window.location.href = "food.html";
+    }
+
 </script>
+```
+
+</body>
+</html>
