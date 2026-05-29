@@ -1,64 +1,150 @@
 <!DOCTYPE html>
+
 <html lang="en">
-  <script src="storage.js"></script>
-  <head>
+<head>
+    <script src="storage.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Food Selection</title>
     <link rel="stylesheet" href="css/food.css" />
-  </head>
-  <body>
-    <div id="foodquestion">
-      <b>What food would you like to eat?</b>
+</head>
+
+<body>
+
+```
+<div id="foodquestion">
+    <b>What food would you like to eat?</b>
+</div>
+
+<div class="food-selection">
+
+    <div class="food-item">
+        <img src="food/burgers.jpeg" alt="Burgers" />
+        <label>
+            <input
+                type="checkbox"
+                name="food"
+                value="Burgers, fries and fried chicken"
+            />
+            burgers and fried chicken
+        </label>
     </div>
 
-    <div class="food-selection">
-      <div class="food-item">
-        <img src="food/burgers.jpeg" alt="Burgers, fries and fried chicken" />
-        <label
-          ><input
-            type="checkbox"
-            name="food"
-            value="Burgers, fries and fried chicken"
-          />
-          burgers and fried chicken</label
-        >
-      </div>
-      <div class="food-item">
+    <div class="food-item">
         <img src="adobo.jpg" alt="adobo" />
-        <label
-          ><input type="checkbox" name="food" value="adobo.jpg" /> adobo</label
-        >
-      </div>
-      <div class="food-item">
-        <img src="balot.jpg" alt="balot" />
-        <label
-          ><input type="checkbox" name="food" value="balot" /> balot</label
-        >
-      </div>
-      <div class="food-item">
-        <img src="spag.jpg" alt="spag" />
-        <label><input type="checkbox" name="food" value="spag" /> spaghetti</label>
-      </div>
-      <div class="food-item">
-        <img src="chocolate.jpg" alt="chocolate" />
-        <label><input type="checkbox" name="food" value="pizza" /> dark chocolates</label>
-      </div>
-      <div class="food-item">
-        <img src="cake.jpg" alt="cake" />
-        <label><input type="checkbox" name="food" value="cake" /> cake</label>
-      </div>
-      <div class="food-item">
-        <img src="lechon kawali.jpg" alt="lechon kawali" />
-        <label><input type="checkbox" name="food" value="lechon kawali" /> lechon kawali</label>
-      </div>
-      <div class="food-item">
-        <img src="lumpia.jpg" alt="lumpia" />
-        <label><input type="checkbox" name="food" value="sushi" /> lumpia</label>
-      </div>
+        <label>
+            <input
+                type="checkbox"
+                name="food"
+                value="adobo"
+            />
+            adobo
+        </label>
     </div>
-    <button class="button" onclick="location.href='dessert.html'">
-      Let's proceed
-    </button>
-  </body>
+
+    <div class="food-item">
+        <img src="balot.jpg" alt="balot" />
+        <label>
+            <input
+                type="checkbox"
+                name="food"
+                value="balot"
+            />
+            balot
+        </label>
+    </div>
+
+    <div class="food-item">
+        <img src="spag.jpg" alt="spaghetti" />
+        <label>
+            <input
+                type="checkbox"
+                name="food"
+                value="spaghetti"
+            />
+            spaghetti
+        </label>
+    </div>
+
+    <div class="food-item">
+        <img src="chocolate.jpg" alt="dark chocolates" />
+        <label>
+            <input
+                type="checkbox"
+                name="food"
+                value="dark chocolates"
+            />
+            dark chocolates
+        </label>
+    </div>
+
+    <div class="food-item">
+        <img src="cake.jpg" alt="cake" />
+        <label>
+            <input
+                type="checkbox"
+                name="food"
+                value="cake"
+            />
+            cake
+        </label>
+    </div>
+
+    <div class="food-item">
+        <img src="lechon kawali.jpg" alt="lechon kawali" />
+        <label>
+            <input
+                type="checkbox"
+                name="food"
+                value="lechon kawali"
+            />
+            lechon kawali
+        </label>
+    </div>
+
+    <div class="food-item">
+        <img src="lumpia.jpg" alt="lumpia" />
+        <label>
+            <input
+                type="checkbox"
+                name="food"
+                value="lumpia"
+            />
+            lumpia
+        </label>
+    </div>
+
+</div>
+
+<button class="button" onclick="saveFood()">
+    Let's proceed
+</button>
+
+<script>
+    function saveFood() {
+
+        let selectedFoods = [];
+
+        document
+            .querySelectorAll('input[name="food"]:checked')
+            .forEach(item => {
+                selectedFoods.push(item.value);
+            });
+
+        if (selectedFoods.length === 0) {
+            alert("Please select at least one food.");
+            return;
+        }
+
+        localStorage.setItem(
+            "selectedFood",
+            JSON.stringify(selectedFoods)
+        );
+
+        window.location.href = "dessert.html";
+    }
+</script>
+```
+
+</body>
 </html>
